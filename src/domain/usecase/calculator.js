@@ -4,7 +4,7 @@ export class Calculator {
   calc (equation) {
     if (equation) {
       this.eq = []
-      this.explode(equation)
+      this.explode(equation.trim())
       this.verifyParentheses()
     } else {
       throw new Error('Missing Param')

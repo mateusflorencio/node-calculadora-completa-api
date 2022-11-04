@@ -36,4 +36,9 @@ describe('Calculator', () => {
       expect(error.message).toEqual('Mising Parentheses, verify equation')
     }
   })
+
+  it('should remove all spaces', () => {
+    sut.calc('2+(48*8)/4 ')
+    expect(sut.eq).toEqual(['2', '+', '(', '48', '*', '8', ')', '/', '4'])
+  })
 })
