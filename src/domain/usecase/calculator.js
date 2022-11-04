@@ -4,10 +4,11 @@ export class Calculator {
   calc (equation) {
     if (equation) {
       this.eq = []
+      this.explode(equation)
+      this.verifyParentheses()
     } else {
       throw new Error('Missing Param')
     }
-    this.explode(equation)
   }
 
   explode (equation) {
@@ -29,5 +30,10 @@ export class Calculator {
         .splice(toCut)
         .join('')
     }
+  }
+
+  verifyParentheses () {
+    const res = this.eq.join('').match(/[()]/g)
+    if (res && res.length % 2 === 1) throw new Error('Mising Parentheses, verify equation')
   }
 }

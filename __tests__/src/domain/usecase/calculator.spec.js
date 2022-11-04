@@ -28,4 +28,12 @@ describe('Calculator', () => {
       expect(error.message).toEqual('Missing Param')
     }
   })
+
+  it('should return throw if input missing parentheses ', () => {
+    try {
+      sut.calc('2+(48*8/4')
+    } catch (error) {
+      expect(error.message).toEqual('Mising Parentheses, verify equation')
+    }
+  })
 })
