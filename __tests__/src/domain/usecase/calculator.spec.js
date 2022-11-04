@@ -22,4 +22,13 @@ describe('Calculator', () => {
     sut.calc('2+((48*8)/4)')
     expect(sut.eq).toEqual(['2', '+', '(', '(', '48', '*', '8', ')', '/', '4', ')'])
   })
+
+  it('should return throw if input null', () => {
+    const sut = new Calculator()
+    try {
+      sut.calc()
+    } catch (error) {
+      expect(error.message).toEqual('Missing Param')
+    }
+  })
 })

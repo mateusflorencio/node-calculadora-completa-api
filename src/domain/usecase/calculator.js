@@ -2,7 +2,11 @@ export class Calculator {
   eq = []
 
   calc (equation) {
-    if (this.eq.length > 0) this.eq = []
+    if (equation) {
+      this.eq = []
+    } else {
+      throw new Error('Missing Param')
+    }
     this.explode(equation)
   }
 
