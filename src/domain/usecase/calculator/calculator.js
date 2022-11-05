@@ -1,4 +1,4 @@
-import { sum, sub, multi, div } from '../model'
+import { sum, sub, multi, div } from '../../model'
 
 export const Calculator = (array) => {
   while (array.length > 1) {
