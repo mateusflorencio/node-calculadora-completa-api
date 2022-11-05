@@ -1,8 +1,8 @@
 import { expect, it, describe } from '@jest/globals'
-import { Calculator } from '../../../../src/domain/usecase'
+import { Calculator } from '../../../src/domain/usecase'
 
 describe('Calculator usecase', () => {
-  it('', () => {
+  it('calcule', () => {
     let out = Calculator(['2', '+', '2'])
     expect(out).toEqual(4)
     out = Calculator(['2', '-', '2'])

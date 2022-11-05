@@ -1,6 +1,6 @@
 import { expect, it, describe, beforeEach, jest } from '@jest/globals'
-import { Calculator } from '../../../../src/application/controllers'
-import { missingParam } from '../../../../src/application/errors'
+import { Calculator } from '../../../src/application/controllers'
+import { missingParam } from '../../../src/application/errors'
 
 describe('Calculator', () => {
   let sut
