@@ -1,39 +1,33 @@
 export class Calculator {
   eq = []
-
-  calc (equation) {
-    if (equation) {
-      this.eq = []
-      this.explode(equation.trim())
-      this.verifyParentheses()
-    } else {
-      throw new Error('Missing Param')
-    }
+  constructor (validations) {
+    this.validations = validations
   }
 
-  explode (equation) {
-    while (equation.length > 0) {
+  calc (equation) {
+    const out = this.validations(equation)
+    if (out instanceof Error) throw out
+    this.explode(out)
+  }
+
+  explode (input) {
+    while (input.length > 0) {
       let toCut = 0
-      const numbers = equation.match(/\d+/i)[0]
+      const numbers = input.match(/\d+/i)[0]
       if (numbers) {
         toCut = numbers.length
         this.eq.push(numbers)
       }
-      const noNumbers = equation.match(/\D+/i)
+      const noNumbers = input.match(/\D+/i)
       if (noNumbers) {
         toCut += noNumbers[0].length
         this.eq.push(...noNumbers[0].split(''))
       }
 
-      equation = equation
+      input = input
         .split('')
         .splice(toCut)
         .join('')
     }
-  }
-
-  verifyParentheses () {
-    const res = this.eq.join('').match(/[()]/g)
-    if (res && res.length % 2 === 1) throw new Error('Mising Parentheses, verify equation')
   }
 }

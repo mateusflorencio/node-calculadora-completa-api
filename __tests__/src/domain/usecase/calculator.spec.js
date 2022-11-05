@@ -1,44 +1,29 @@
-import { expect, it, describe, beforeEach } from '@jest/globals'
+import { expect, it, describe, beforeEach, jest } from '@jest/globals'
 import { Calculator } from '../../../../src/domain/usecase'
-
 describe('Calculator', () => {
   let sut
+  const validations = jest.fn().mockReturnValue('22454*45/8/4')
   beforeEach(() => {
-    sut = new Calculator()
+    sut = new Calculator(validations)
   })
   it('should return explode correct', () => {
-    sut.calc('22454*45/8/4')
+    const input = '22454*45/8/4'
+    sut.calc(input)
     expect(sut.eq).toEqual(['22454', '*', '45', '/', '8', '/', '4'])
   })
 
-  it('should return explode correct', () => {
-    sut.calc('2+(48*8)/4')
-    expect(sut.eq).toEqual(['2', '+', '(', '48', '*', '8', ')', '/', '4'])
+  it('should call once', () => {
+    const spySut = jest.spyOn(sut, 'calc')
+    sut.calc()
+    expect(spySut).toBeCalledTimes(1)
   })
 
-  it('should return explode correct', () => {
-    sut.calc('2+((48*8)/4)')
-    expect(sut.eq).toEqual(['2', '+', '(', '(', '48', '*', '8', ')', '/', '4', ')'])
-  })
-
-  it('should return throw if input null', () => {
+  it('should return throw if validations return error', () => {
+    validations.mockReturnValueOnce(new Error('Missing Param'))
     try {
-      sut.calc()
+      sut.calc('')
     } catch (error) {
       expect(error.message).toEqual('Missing Param')
     }
-  })
-
-  it('should return throw if input missing parentheses ', () => {
-    try {
-      sut.calc('2+(48*8/4')
-    } catch (error) {
-      expect(error.message).toEqual('Mising Parentheses, verify equation')
-    }
-  })
-
-  it('should remove all spaces', () => {
-    sut.calc('2+(48*8)/4 ')
-    expect(sut.eq).toEqual(['2', '+', '(', '48', '*', '8', ')', '/', '4'])
   })
 })
