@@ -1,5 +1,8 @@
 import { expect, it, describe } from '@jest/globals'
-import { div, multi, sub, sum } from '../../../src/domain/model'
+import div from '../../../src/domain/model/operations/div47'
+import multi from '../../../src/domain/model/operations/multi42'
+import sub from '../../../src/domain/model/operations/sub45'
+import sum from '../../../src/domain/model/operations/sum43'
 
 describe('Calculator', () => {
   it('1 + 3 must be 4', () => {
