@@ -1,6 +1,6 @@
 
 import { expect, it, describe } from '@jest/globals'
-import { ValidationBuilder } from '../../../../src/domain/validations'
+import { ValidationBuilder } from '../../../../src/application/validations'
 
 describe('Validation', () => {
   it('should remove all spaces', () => {

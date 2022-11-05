@@ -1,6 +1,6 @@
 import { expect, it, describe, beforeEach, jest } from '@jest/globals'
-import { Calculator } from '../../../../src/domain/usecase'
-import { missingParam } from '../../../../src/domain/errors'
+import { Calculator } from '../../../../src/application/controllers'
+import { missingParam } from '../../../../src/application/errors'
 
 describe('Calculator', () => {
   let sut
@@ -12,7 +12,7 @@ describe('Calculator', () => {
   })
   it('should return explode correct', () => {
     sut.handle('')
-    expect(sut.eq).toEqual(['any_data'])
+    expect(explode).toHaveReturnedWith(['any_data'])
   })
 
   it('should call once', () => {
