@@ -1,3 +1,5 @@
+import { missingParam, missingParentheses } from '../errors'
+
 export const ValidationBuilder = () => {
   return {
     of: function (input) {
@@ -5,7 +7,7 @@ export const ValidationBuilder = () => {
       return this
     },
     isNull: function () {
-      if (!this.input) this.error = new Error('Missing Param')
+      if (!this.input) this.error = missingParam()
       return this
     },
     sanitize: function () {
@@ -15,7 +17,7 @@ export const ValidationBuilder = () => {
     verifyParentheses: function () {
       if (this.input) {
         const res = this.input.match(/[()]/g)
-        if (res && res.length % 2 === 1) this.error = new Error('Missing Parentheses, verify equation')
+        if (res && res.length % 2 === 1) this.error = missingParentheses()
       }
       return this
     },

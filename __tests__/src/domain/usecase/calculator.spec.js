@@ -1,5 +1,6 @@
 import { expect, it, describe, beforeEach, jest } from '@jest/globals'
 import { Calculator } from '../../../../src/domain/usecase'
+import { missingParam } from '../../../../src/domain/errors'
 describe('Calculator', () => {
   let sut
   const validations = jest.fn().mockReturnValue('22454*45/8/4')
@@ -19,11 +20,11 @@ describe('Calculator', () => {
   })
 
   it('should return throw if validations return error', () => {
-    validations.mockReturnValueOnce(new Error('Missing Param'))
+    validations.mockReturnValueOnce(missingParam())
     try {
       sut.calc('')
     } catch (error) {
-      expect(error.message).toEqual('Missing Param')
+      expect(error.message).toEqual(missingParam().message)
     }
   })
 })
