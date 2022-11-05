@@ -1,28 +1,30 @@
 import { expect, it, describe, beforeEach, jest } from '@jest/globals'
 import { Calculator } from '../../../../src/domain/usecase'
 import { missingParam } from '../../../../src/domain/errors'
+
 describe('Calculator', () => {
   let sut
   const validations = jest.fn().mockReturnValue('22454*45/8/4')
+  const explode = jest.fn().mockReturnValue(['any_data'])
+
   beforeEach(() => {
-    sut = new Calculator(validations)
+    sut = new Calculator(validations, explode)
   })
   it('should return explode correct', () => {
-    const input = '22454*45/8/4'
-    sut.calc(input)
-    expect(sut.eq).toEqual(['22454', '*', '45', '/', '8', '/', '4'])
+    sut.handle('')
+    expect(sut.eq).toEqual(['any_data'])
   })
 
   it('should call once', () => {
-    const spySut = jest.spyOn(sut, 'calc')
-    sut.calc()
+    const spySut = jest.spyOn(sut, 'handle')
+    sut.handle()
     expect(spySut).toBeCalledTimes(1)
   })
 
   it('should return throw if validations return error', () => {
     validations.mockReturnValueOnce(missingParam())
     try {
-      sut.calc('')
+      sut.handle('')
     } catch (error) {
       expect(error.message).toEqual(missingParam().message)
     }
