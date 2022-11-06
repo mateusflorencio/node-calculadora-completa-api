@@ -1,1 +1,1 @@
-export default (a, b) => parseInt(a) + parseInt(b)
+export default (a, b) => parseFloat(a) + parseFloat(b)
