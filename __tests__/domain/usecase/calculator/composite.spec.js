@@ -1,12 +1,12 @@
 import { expect, it, describe } from '@jest/globals'
-import { compositeEquation } from '../../../../src/domain/usecase/'
+import { equationsStrategy } from '../../../../src/domain/usecase/calculator'
 
 const functionMap = {
   '+': function () { return 'fn_1' },
   '-': function () { return 'fn_2' }
 }
 
-const sut = compositeEquation(functionMap)
+const sut = equationsStrategy(functionMap)
 describe('compositeEquation', () => {
   it('should return fn_1', () => {
     const res = sut(1, '+', 2)

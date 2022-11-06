@@ -1,18 +1,13 @@
 import { expect, it, describe, beforeEach, jest } from '@jest/globals'
-import { Calculator } from '../../../src/application/controllers'
+import { CalculatorController } from '../../../src/application/controllers'
 import { missingParam } from '../../../src/application/errors'
 
-describe('Calculator', () => {
+describe('CalculatorController', () => {
   let sut
   const validations = jest.fn().mockReturnValue('22454*45/8/4')
-  const explode = jest.fn().mockReturnValue(['any_data'])
 
   beforeEach(() => {
-    sut = new Calculator(validations, explode)
-  })
-  it('should return explode correct', () => {
-    sut.handle('')
-    expect(explode).toHaveReturnedWith(['any_data'])
+    sut = new CalculatorController(validations)
   })
 
   it('should call once', () => {
