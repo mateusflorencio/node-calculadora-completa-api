@@ -8,7 +8,7 @@ export const CalculatorController = (validations, calculatorUsecase, calculatorR
         calculatorRepo.save(user, out, res)
         return {
           statusCode: 200,
-          data: res
+          data: { result: res }
         }
       } catch (error) {
         return {
