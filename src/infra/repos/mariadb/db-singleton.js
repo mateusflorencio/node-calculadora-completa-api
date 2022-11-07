@@ -8,6 +8,9 @@ export const DbSigleton = () => {
     },
     disconnect: async function () {
       await prisma.$disconnect()
+    },
+    get: function () {
+      return prisma
     }
   }
 }
