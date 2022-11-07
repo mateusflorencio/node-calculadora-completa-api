@@ -43,4 +43,7 @@ describe('CalculatorController', () => {
     expect(calculatorRepo.save).toBeCalledTimes(1)
     expect(calculatorRepo.save).toHaveBeenCalledWith(input.user, 'vali_result', 'any_value')
   })
+  it('should return with correc value', () => {
+    expect(sut.handle(input)).toEqual('any_value')
+  })
 })

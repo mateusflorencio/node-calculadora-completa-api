@@ -6,9 +6,14 @@ export class CalculatorController {
   }
 
   handle ({ user, equation }) {
-    const out = this.validations(equation)
-    if (out instanceof Error) throw out
-    const res = this.calculatorUsecase(out)
-    this.calculatorRepo.save(user, out, res)
+    try {
+      const out = this.validations(equation)
+      if (out instanceof Error) throw out
+      const res = this.calculatorUsecase(out)
+      this.calculatorRepo.save(user, out, res)
+      return res
+    } catch (error) {
+      return error.message
+    }
   }
 }
