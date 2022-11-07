@@ -6,8 +6,6 @@ export default (app) => {
   const router = Router()
   app.use('/api', router)
   readdirSync(join(dirname('.'), 'src/main/routes')).map(async file => {
-    if (!file.endsWith('.map')) {
-      (await import(`../routes/${file}`)).default(router)
-    }
+    (await import(`../routes/${file}`)).default(router)
   })
 }
