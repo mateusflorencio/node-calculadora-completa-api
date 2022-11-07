@@ -1,1 +1,1 @@
-export * from './validationBuilder'
+export * from './validation-builder'

@@ -1,3 +1,3 @@
 export * from './calculator'
 export * from './save-calculator-usecase'
-export * from './loadall-calculator-result'
+export * from './load-all-calcule-result'

@@ -1,4 +1,2 @@
 import { CalculatorRepo } from '../../infra/repos/mariadb/calculator-repo.js'
-export const calculatorRepoFactory = () => {
-  return CalculatorRepo()
-}
+export const calculatorRepoFactory = () => CalculatorRepo()

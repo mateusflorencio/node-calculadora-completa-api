@@ -5,11 +5,14 @@ import { missingParam } from '../../../src/application/errors'
 describe('CalculatorController', () => {
   let sut
   const input = { user: 'any_user', equation: 'any_equation' }
-  const validations = jest.fn().mockReturnValue('vali_result')
-  const calculatorUsecase = jest.fn().mockReturnValue('any_value')
-  const calculatorRepo = { save: jest.fn() }
+  let validations = jest.fn().mockReturnValue('vali_result')
+  let calculatorUsecase = jest.fn().mockReturnValue('any_value')
+  let calculatorRepo = { save: jest.fn() }
   beforeEach(() => {
-    sut = new CalculatorController(validations, calculatorUsecase, calculatorRepo)
+    validations = jest.fn().mockReturnValue('vali_result')
+    calculatorUsecase = jest.fn().mockReturnValue('any_value')
+    calculatorRepo = { save: jest.fn() }
+    sut = CalculatorController(validations, calculatorUsecase, calculatorRepo)
   })
 
   it('should call once', () => {

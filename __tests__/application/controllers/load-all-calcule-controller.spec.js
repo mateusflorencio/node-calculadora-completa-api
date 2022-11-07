@@ -25,6 +25,6 @@ describe('LoadAllCalculeController', () => {
     calculatorRepo = { loadAll: jest.fn().mockRejectedValueOnce(new Error('error')) }
     sut = LoadAllCalculeController(calculatorRepo)
     const promise = await sut.handle()
-    expect(promise).toEqual({ statusCode: 500, data: 'error' })
+    expect(promise).toEqual({ statusCode: 400, data: 'error' })
   })
 })

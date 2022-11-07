@@ -1,10 +1,10 @@
 import { expect, it, describe, beforeAll, jest } from '@jest/globals'
-import { loadAllCalculatorResultUsecase } from '../../../src/domain/usecase'
+import { loadAllCalculateResultUsecase } from '../../../src/domain/usecase'
 describe('saveCalculatorUsecase', () => {
   let sut
   const repo = { loadAll: jest.fn().mockResolvedValue(['any_value']) }
   beforeAll(() => {
-    sut = loadAllCalculatorResultUsecase(repo)
+    sut = loadAllCalculateResultUsecase(repo)
   })
 
   it('should return with correct value', async () => {

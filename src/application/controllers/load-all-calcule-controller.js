@@ -9,7 +9,7 @@ export const LoadAllCalculeController = (repo) => {
         }
       } catch (error) {
         return {
-          statusCode: 500,
+          statusCode: 400,
           data: error.message
         }
       }
