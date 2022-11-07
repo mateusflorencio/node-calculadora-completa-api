@@ -1,4 +1,4 @@
-import { missingParam, missingParentheses } from '../errors'
+import { missingParam, missingParentheses } from '../errors/errors.js'
 
 export const ValidationBuilder = () => {
   return {

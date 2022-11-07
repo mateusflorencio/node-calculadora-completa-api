@@ -6,7 +6,7 @@ export const CalculatorRepo = () => {
       await DbSigleton().get().calculos.create({
         data: {
           equacao: equation,
-          resultado: result,
+          resultado: result.toString(),
           usuario: user
         }
       })

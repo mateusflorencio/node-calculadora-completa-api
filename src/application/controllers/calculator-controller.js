@@ -11,9 +11,15 @@ export class CalculatorController {
       if (out instanceof Error) throw out
       const res = this.calculatorUsecase(out)
       this.calculatorRepo.save(user, out, res)
-      return res
+      return {
+        statusCode: 200,
+        data: res
+      }
     } catch (error) {
-      return error.message
+      return {
+        statusCode: 500,
+        data: error.message
+      }
     }
   }
 }

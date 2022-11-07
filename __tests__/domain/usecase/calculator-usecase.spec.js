@@ -1,6 +1,6 @@
 import { expect, it, describe, beforeAll } from '@jest/globals'
 import { CalculatorUsecase, equationsStrategy } from '../../../src/domain/usecase'
-import { importOperations } from '../../../src/main/calculadora/import-operations'
+import { importOperations } from '../../../src/main/factories/import-operations'
 
 describe('CalculatorUsecase', () => {
   let sut

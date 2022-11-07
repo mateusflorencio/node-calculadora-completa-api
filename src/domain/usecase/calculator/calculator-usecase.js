@@ -1,5 +1,5 @@
-import { explode } from './explode'
-import { calc, calcWithParathenses } from './helpers'
+import { explode } from './explode.js'
+import { calc, calcWithParathenses } from './helpers.js'
 
 export const CalculatorUsecase = (equationsStrategy) => (equation) => {
   let array = explode(equation)
