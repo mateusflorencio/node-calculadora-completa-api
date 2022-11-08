@@ -67,7 +67,8 @@ api/calculator
 		"id": number,
 		"usuario": string,
 		"equacao": string,
-		"resultado": string
+		"resultado": string,
+		"criacao" : date
 	}
 ]
 ~~~

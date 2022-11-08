@@ -12,4 +12,5 @@ model calculos {
   usuario String
   equacao  String
   resultado  String
+  criacao  DateTime  @default(now())
 }
