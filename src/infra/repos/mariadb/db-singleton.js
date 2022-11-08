@@ -1,16 +1,11 @@
 import { PrismaClient } from '@prisma/client'
+export class DbSigleton {
+  static async connect () {
+    this.prisma = new PrismaClient()
+    await this.prisma.$connect()
+  }
 
-export const DbSigleton = () => {
-  const prisma = new PrismaClient()
-  return {
-    connect: async function () {
-      await prisma.$connect()
-    },
-    disconnect: async function () {
-      await prisma.$disconnect()
-    },
-    get: function () {
-      return prisma
-    }
+  static get () {
+    return this.prisma
   }
 }
