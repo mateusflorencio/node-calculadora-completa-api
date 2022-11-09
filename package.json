@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node src/main/server.js",
     "compose": "docker-compose up -d",
+    "build": "npm i && npm run prisma:generate",
     "dev": "nodemon src/main/server.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --passWithNoTests --silent --noStackTrace  --runInBand ",
     "test:watch": "npm t -- --watch",
